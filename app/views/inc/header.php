@@ -9,4 +9,3 @@
     <title><?= SITENAME ?></title>
 </head>
 <body>
-coach pro home
