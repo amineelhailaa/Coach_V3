@@ -5,22 +5,20 @@ class UploadPic
 
     public static function validate($image)
     {
-        if(!isset($image) || $image["error"]!=0){
-            throw new Exception("upload image error".$image["error"]);
+        if (!isset($image) || $image["error"] != 0) {
+            throw new Exception("upload image error" . $image["error"]);
         }
     }
 
 
-    /**
-     * @throws Exception
-     */
+
     public static function uploadPicture($image)
     {
         self::validate($image);
         $src = $image["tmp_name"]; //actual temp path
         $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
-        $newFileName = uniqid().'.'.$extension;
-        $newSrc= __DIR__."/../uploads/".$newFileName;
+        $newFileName = uniqid() . '.' . $extension;
+        $newSrc = __DIR__ . "/../uploads/" . $newFileName;
         if (!is_dir(__DIR__ . "/../uploads")) {
             throw new Exception("uploads folder missing: " . (__DIR__ . "/../uploads"));
         }
@@ -31,7 +29,7 @@ class UploadPic
             throw new Exception("temp file is not an uploaded file: " . $src);
         }
 
-        if(!move_uploaded_file($src, $newSrc)){
+        if (!move_uploaded_file($src, $newSrc)) {
             throw new Exception("move image error");
         }
         return $newFileName;

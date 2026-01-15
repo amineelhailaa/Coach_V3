@@ -7,9 +7,9 @@ class Coach extends User
     private $exp;
     private $bio;
 
-    public function __construct($nom, $phone, $email,$password, $sport, $exp, $bio, $id=null)
+    public function __construct($nom, $phone, $email,$password,$pic, $sport, $exp, $bio, $id=null)
     {
-        parent::__construct($nom, $phone, $email,$password, $id);
+        parent::__construct($nom, $phone, $email,$password,$pic, $id);
         $this->sport = $sport;
         $this->exp = $exp;
         $this->bio = $bio;
