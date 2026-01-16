@@ -1,6 +1,7 @@
 <?php
 
 namespace services;
+use \models\{Coach,Sportif};
 
 class RoleLogic
 {

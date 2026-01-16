@@ -1,7 +1,8 @@
 <?php
-namespace controllers;
-
-
+use \libraries\Database;
+use \repositories\{UserRepository,coachRepository,sportifRepository};
+use models\{Coach,Sportif,User};
+use services\{Authentication,RoleLogic,UploadPic};
 
 
 class Users extends \libraries\Controller
@@ -15,25 +16,16 @@ class Users extends \libraries\Controller
         $this->db = new Database();
         $this->repo = new UserRepository($this->db);
         $this->auth = new Authentication($this->db);
-
     }
 
     public function register()
     {
         try {
-
-
             if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
                 //filling role factory
                 //process the form
-
-
                 //sanitize post in one line
-
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? [];
                 //init data
                 $data = [
                     'nom' => trim($_POST['nom']),
@@ -47,26 +39,18 @@ class Users extends \libraries\Controller
                     'pic' => UploadPic::uploadPicture($_FILES['avatar']),
                     'nom_err' => '',
                     'email_err' => '',
-                    'passowrd_err' => '',
+                    'password_err' => '',
+                    'phone_err' =>''
                 ];
 
                 $data = $this->auth->registerService($data);
                 if($data===1) {
+                    die("succssess");
                     //redirect , register done
-
-
-
                 } else {
                     $this->view('users/register',$data);
                 }
-
-
-
-
-
-
             } else {
-                //init data
                 $data = [
                     'nom' => '',
                     'email' => '',
@@ -77,6 +61,7 @@ class Users extends \libraries\Controller
                     'bio' => '',
                     'sport' => '',
                     'nom_err' => '',
+                    'phone_err' => '',
                     'email_err' => '',
                     'password_err' => '',
                 ];
@@ -84,9 +69,9 @@ class Users extends \libraries\Controller
 
 
             //load the view
-            $this->view('users/register');
+            $this->view('users/register',$data);
 
-        }catch (Throwable $e){
+        }catch (\Throwable $e){
             echo  $e->getMessage();
         }
     }

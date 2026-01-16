@@ -1,6 +1,7 @@
 <?php
 /* this is the pdo database class connected to database witht he config */
 namespace libraries;
+use PDO;
 
 
 class Database

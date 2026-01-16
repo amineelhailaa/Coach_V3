@@ -1,5 +1,7 @@
 <?php
 namespace services;
+use \repositories\{sportifRepository,coachRepository,UserRepository};
+use \services\{UploadPic,RoleLogic};
 
 
 class Authentication
@@ -14,13 +16,13 @@ class Authentication
 
     public function __construct($db)
     {
+        $this->db = $db;
         $this->userRepo = new UserRepository($db);
     }
 
 
     public function registerService($data)
     {
-
 
         //validation Email
         if (empty($data['email'])) {
@@ -29,15 +31,20 @@ class Authentication
             $data['email_err'] = 'email already linked with an account';
         }
 
-
-
         //validate passowrd
         if (empty($data['password'])) {
-            $data['passowrd_err'] = 'please enter the password';
+            $data['password_err'] = 'please enter the password';
         }
         //validation nom
         if (empty($data['nom'])) {
             $data['nom_err'] = 'please enter the email';
+        }
+
+        if(empty($data['pic'])){
+            $data['pic_err'] = 'please upload your image';
+        }
+        if(empty($data['phone'])){
+            $data['phone_err'] = 'please type your phone';
         }
 
 

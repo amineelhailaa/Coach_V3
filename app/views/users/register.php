@@ -1,4 +1,5 @@
-<?php require_once APPROOT.'/views/inc/header.php'; ?>
+<?php require_once APPROOT.'/views/inc/header.php';
+?>
 
 <!-- Sign Up (Coach Pro) — HTML only (no CSS, no JS) -->
 <!-- Sign Up (Coach Pro) — HTML only (keeps the same IDs/classes for your existing CSS/JS) -->

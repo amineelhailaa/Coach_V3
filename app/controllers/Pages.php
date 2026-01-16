@@ -1,5 +1,4 @@
 <?php
-namespace controllers;
 class Pages extends Controller
 {
     public function __construct(){
