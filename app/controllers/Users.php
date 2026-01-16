@@ -1,11 +1,20 @@
 <?php
+namespace controllers;
 
 
-class Users extends Controller
+
+
+class Users extends \libraries\Controller
 {
 
+    private $repo;
+    private $db;
+    private $auth;
     public function __construct()
     {
+        $this->db = new Database();
+        $this->repo = new UserRepository($this->db);
+        $this->auth = new Authentication($this->db);
 
     }
 
@@ -16,6 +25,7 @@ class Users extends Controller
 
             if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
+                //filling role factory
                 //process the form
 
 
@@ -40,29 +50,19 @@ class Users extends Controller
                     'passowrd_err' => '',
                 ];
 
-
-                //validation Email
-                if (empty($data['email'])) {
-                    $data['email_err'] = 'please enter the email';
-                }
-                //validate passowrd
-                if (empty($data['password'])) {
-                    $data['passowrd_err'] = 'please enter the email';
-                }
-                //validation nom
-                if (empty($data['nom'])) {
-                    $data['nom_err'] = 'please enter the email';
-                }
+                $data = $this->auth->registerService($data);
+                if($data===1) {
+                    //redirect , register done
 
 
-                if (empty($data['email_err']) && empty($data['passowrd_err']) && empty($data['nom_err'])) {
-                    die('SUCCESS');
+
                 } else {
-                    //load view with errors
-                    $this->view('users/register', $data);
+                    $this->view('users/register',$data);
                 }
 
-                //process the form
+
+
+
 
 
             } else {

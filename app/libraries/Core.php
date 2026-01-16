@@ -1,5 +1,5 @@
 <?php
-
+namespace libraries;
 
 class Core {
     protected  $currentController = 'Pages';

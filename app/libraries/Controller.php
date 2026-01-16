@@ -1,4 +1,5 @@
 <?php
+namespace libraries;
 
 class Controller
 {
@@ -10,18 +11,6 @@ class Controller
         return new $model();
     }
 
-
-    public function service($service){
-      require_once "../app/service/" . $service . ".php";
-      return new $service;
-    }
-
-
-    public  function repository($repository)
-    {
-        require_once "../app/repository" . $repository . ".php";
-        return new $repository;
-    }
 
 
 

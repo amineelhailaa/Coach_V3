@@ -1,5 +1,5 @@
 <?php
-
+namespace models;
 
 abstract class User
 {
@@ -60,7 +60,7 @@ abstract class User
         return $this->email;
     }
 
-    public function getName()
+    public function getNom()
     {
         return $this->nom;
     }
@@ -76,6 +76,8 @@ abstract class User
     }
 
 
+    //abstract functions
     abstract public function getRole();
+
 
 }

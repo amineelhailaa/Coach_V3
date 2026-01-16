@@ -1,5 +1,8 @@
 <?php
 /* this is the pdo database class connected to database witht he config */
+namespace libraries;
+
+
 class Database
 {
     private $host=DB_HOST;
@@ -51,21 +54,21 @@ class Database
         }
         $this->stmt->bindValue($param, $value, $type);
     }
-    public function excute(){
-        return $this->stmt->excute();
+    public function execute(){
+        return $this->stmt->execute();
     }
 
 
     //get results
     public function resultSet(){
-        $this->excute();
+        $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
 
     //get single record
     public function single(){
-        $this->excute();
+        $this->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
@@ -73,6 +76,11 @@ class Database
     //get row count
     public function rowCount(){
         return $this->stmt->rowCount();
+    }
+
+    public function insertId()
+    {
+        return $this->dbh->lastInsertId();
     }
 
 }

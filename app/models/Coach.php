@@ -1,5 +1,9 @@
 <?php
 
+namespace models;
+use models\User;
+
+
 
 class Coach extends User
 {
@@ -18,7 +22,7 @@ class Coach extends User
 
     public function getSport() {return $this->sport;}
     public function getExp() {return $this->exp;}
-    public function getDescription() {return $this->bio;}
+    public function getBio() {return $this->bio;}
     public function getRole() { return "coach"; }
 
 
