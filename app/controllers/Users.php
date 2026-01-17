@@ -81,7 +81,7 @@ class Users extends \libraries\Controller
         {
             if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? [];
 
 
 
@@ -93,7 +93,7 @@ class Users extends \libraries\Controller
                     'passowrd_err' => ''
                 ];
 
-
+                $this->auth->loginService($data);
                 //validation Email
                 if(empty($data['email'])){
                     $data['email_err'] ='please enter the email';

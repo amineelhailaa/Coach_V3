@@ -50,7 +50,7 @@ class Authentication
 
 
         //make sure errors are empty
-        if (empty($data['email_err']) && empty($data['passowrd_err']) && empty($data['nom_err'])) {
+        if (empty($data['email_err']) && empty($data['password_err']) && empty($data['nom_err'])) {
             $this->factory = new RoleLogic($data);
             $user = $this->factory->Decide(); //return the right class ( coach or sportif )
             //now i need to pass the user to sign up function
