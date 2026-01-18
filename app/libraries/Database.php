@@ -27,7 +27,7 @@ class Database
         //CREATE PDO Instance
         try {
             $this->dbh = new PDO($dsn,$this->user,$this->pwd,$options);
-        }catch (PDOException $e){
+        }catch (\PDOException $e){
             $this->error = $e->getMessage();
             echo $this->error;
         }

@@ -1,5 +1,7 @@
 <?php
-class Pages extends Controller
+
+
+class Pages extends \libraries\Controller
 {
     public function __construct(){
     }

@@ -1,5 +1,3 @@
-<?php require_once APPROOT.'/views/inc/header.php';?>
-
 <div class="shell">
     <section class="left">
         <div class="brand">
@@ -73,4 +71,3 @@
         });
     }
 </script>
-<?php require_once APPROOT.'/views/inc/footer.php';?>

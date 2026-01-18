@@ -25,6 +25,9 @@ class Core {
                 $this->currentMethod =$url[1];
                 //unset function
                 unset($url[1]);
+            } else {
+                $this->currentController = new \controllers\Errors();
+                $this->currentMethod = 'four';
             }
         }
 

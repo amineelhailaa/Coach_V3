@@ -1,8 +1,3 @@
-<?php require_once APPROOT.'/views/inc/header.php';
-?>
-
-<!-- Sign Up (Coach Pro) — HTML only (no CSS, no JS) -->
-<!-- Sign Up (Coach Pro) — HTML only (keeps the same IDs/classes for your existing CSS/JS) -->
 <div class="shell">
     <section class="left">
         <div class="brand">
@@ -264,4 +259,4 @@
 
 
 
-<?php require_once APPROOT.'/views/inc/footer.php';?>
+

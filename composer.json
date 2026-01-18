@@ -1,0 +1,21 @@
+{
+    "name": "amine-elhailaa/coachv3",
+    "autoload": {
+        "psr-4": {
+            "factories\\": "app/factories",
+            "models\\": "app/models",
+            "repositories\\": "app/repositories",
+            "services\\": "app/services",
+            "validators\\": "app/validators",
+            "controllers\\": "app/controllers",
+            "libraries\\": "app/libraries"
+        }
+    },
+    "authors": [
+        {
+            "name": "AMINE",
+            "email": "amineelhailaa@gmail.com"
+        }
+    ],
+    "require": {}
+}
