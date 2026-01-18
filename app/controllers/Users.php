@@ -98,6 +98,9 @@ class Users extends \libraries\Controller
                 if(empty($data['email'])){
                     $data['email_err'] ='please enter the email';
                 }
+                if( $this->repo->findUserByEmail($data['email'])){
+                    $data['email_err'] ='email doesnt exist!';
+                }
                 //validate passowrd
                 if(empty($data['password'])){
                     $data['passowrd_err'] ='please enter the email';
@@ -106,7 +109,8 @@ class Users extends \libraries\Controller
 
 
                 if(empty($data['email_err']) && empty($data['passowrd_err']) ){
-                    die('SUCCESS');
+                    $this->auth->loginService($data);
+                    \libraries\Middleware::redirectToDashboard();
                 } else {
                     //load view with errors
                     $this->view('users/login',$data);

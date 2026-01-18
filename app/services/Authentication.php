@@ -78,8 +78,15 @@ class Authentication
     }
 
 
-    public function loginService()
+    public function loginService($data)
     {
+       $user = $this->userRepo->findUserByEmail($data['email']);
+       $user = (new \factories\UserFactory)->create($data);
+       if (password_hash($data['password'],$user->getPassword())){
+           $_SESSION['id'] = $user['id'];
+           $_SESSION['role']= $user['role'];
+           return true;
+       }
 
     }
 
