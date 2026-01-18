@@ -77,7 +77,8 @@ class Users extends \libraries\Controller
     }
 
 
-    public function login(){
+    public function login(): void
+    {
         {
             if ($_SERVER['REQUEST_METHOD'] === "POST") {
 

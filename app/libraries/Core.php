@@ -29,6 +29,9 @@ class Core {
                 $this->currentController = new \controllers\Errors();
                 $this->currentMethod = 'four';
             }
+        } else {
+            $this->currentController = new \controllers\Errors();
+            $this->currentMethod = 'four';
         }
 
 
