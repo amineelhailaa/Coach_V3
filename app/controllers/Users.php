@@ -91,15 +91,14 @@ class Users extends \libraries\Controller
                     'email' => trim($_POST['email']),
                     'password' => trim($_POST['password']),
                     'email_err' => '',
-                    'passowrd_err' => ''
+                    'password_err' => ''
                 ];
 
-                $this->auth->loginService($data);
                 //validation Email
                 if(empty($data['email'])){
                     $data['email_err'] ='please enter the email';
                 }
-                if( $this->repo->findUserByEmail($data['email'])){
+                if( !$this->repo->findUserByEmail($data['email'])){
                     $data['email_err'] ='email doesnt exist!';
                 }
                 //validate passowrd
@@ -111,7 +110,7 @@ class Users extends \libraries\Controller
 
                 if(empty($data['email_err']) && empty($data['passowrd_err']) ){
                     $this->auth->loginService($data);
-                    \libraries\Middleware::redirectToDashboard();
+                    die("success");
                 } else {
                     //load view with errors
                     $this->view('users/login',$data);

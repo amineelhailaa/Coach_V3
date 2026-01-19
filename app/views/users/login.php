@@ -20,7 +20,7 @@
                 <div class="input-wrap">
                     <input class="input<?= (!empty($data['email_err'])) ? ' is-invalid' : ''; ?>" value="<?= $data['email']; ?>" id="password" name="password" type="password" required>
                     <button type="button" class="toggle-eye" id="togglePwd" aria-label="Show/Hide password">👁️</button>
-                    <span class="invalid-feedback"><?= $data['password_err'] ?></span>
+                    <span class="invalid-feedback"><?= $data['password_err'] ?: ""; ?></span>
 
                 </div>
             </div>

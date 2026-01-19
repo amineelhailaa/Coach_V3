@@ -15,8 +15,8 @@ class UserRepository
         $this->con->query("select * from users where email=:email");
         $this->con->bind(':email', $email);
         $row = $this->con->single();
-        if($this->con->rowCount()>0) return $row;
-        else return false;
+        return $row?: null;
+
     }
 
 

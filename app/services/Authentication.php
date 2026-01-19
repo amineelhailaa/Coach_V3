@@ -80,13 +80,15 @@ class Authentication
 
     public function loginService($data)
     {
-       $user = $this->userRepo->findUserByEmail($data['email']);
-       $user = (new \factories\UserFactory)->create($data);
-       if (password_hash($data['password'],$user->getPassword())){
-           $_SESSION['id'] = $user['id'];
-           $_SESSION['role']= $user['role'];
+       $row = $this->userRepo->findUserByEmail($data['email']);
+       $user = $row ? (new \factories\UserFactory)->create($row) : null;
+       $hash = $user->getPassword();
+       if ($hash && password_verify($data['password'],$user->getPassword())){
+           $_SESSION['id'] = $user->getId();
+           $_SESSION['role']= $user->getRole();
            return true;
        }
+       return false ;
 
     }
 

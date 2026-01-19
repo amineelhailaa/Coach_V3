@@ -10,3 +10,5 @@ class Errors extends \libraries\Controller
         $this->view('errors/errorPage');
     }
 }
+
+
